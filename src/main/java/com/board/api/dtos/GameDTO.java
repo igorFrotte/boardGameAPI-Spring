@@ -12,7 +12,7 @@ import lombok.Data;
 public class GameDTO {
 
     @NotBlank
-    @Size(max = 150, message = "Max 150 characters for name!")
+    @Size(max = 150, message = "Max 150 characters for name.")
     private String name;
 
     @NotBlank
