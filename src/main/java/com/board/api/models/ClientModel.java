@@ -1,6 +1,6 @@
 package com.board.api.models;
 
-import com.board.api.dtos.GameDTO;
+import com.board.api.dtos.ClientDTO;
 
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
@@ -17,16 +17,14 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "games")
-public class GameModel {
-    
-    public GameModel(GameDTO dto){  
-        this.name = dto.getName();
-        this.image = dto.getImage();
-        this.stockTotal = dto.getStockTotal();
-        this.pricePerDay = dto.getPricePerDay();
-    }
+@Table(name = "customers")
+public class ClientModel {
 
+    public ClientModel(ClientDTO dto){
+        this.name = dto.getName();
+        this.cpf = dto.getCpf();
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -35,11 +33,5 @@ public class GameModel {
     private String name;
 
     @Column(nullable = false)
-    private String image;
-
-    @Column(nullable = false)
-    private int stockTotal;
-
-    @Column(nullable = false)
-    private int pricePerDay;
+    private String cpf;
 }
