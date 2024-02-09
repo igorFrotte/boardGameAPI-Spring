@@ -11,7 +11,7 @@ import lombok.Data;
 public class RentalDTO {
 
     @NotNull
-    private Long customerId;
+    private Long clientId;
 
     @NotNull
     private Long gameId;
