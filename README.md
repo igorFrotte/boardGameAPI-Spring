@@ -38,4 +38,4 @@ mvn test
 
 ### Deploy
 
-O deploy da aplicação está localizado em [boardgamespring.onrender.com] (https://boardgamespring.onrender.com/).
+O deploy da aplicação está localizado em https://boardgamespring.onrender.com.
