@@ -26,8 +26,8 @@ public class ClientService {
             //exception
         }
 
-        ClientModel customer = new ClientModel(dto);
-        return clientRepository.save(customer);
+        ClientModel client = new ClientModel(dto);
+        return clientRepository.save(client);
     }
 
 }
