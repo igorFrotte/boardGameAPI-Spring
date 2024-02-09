@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({GameConflictNameException.class})
-    public ResponseEntity<String> handlerGameNameConflict(GameConflictNameException exception){
+    public ResponseEntity<String> handlerGameConflictName(GameConflictNameException exception){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({ClientConflictCPFException.class})
-    public ResponseEntity<String> handlerCustomerCpfConflict(ClientConflictCPFException exception){
+    public ResponseEntity<String> handlerCustomerConflictCPF(ClientConflictCPFException exception){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 

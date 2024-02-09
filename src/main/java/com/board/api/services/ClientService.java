@@ -5,6 +5,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.board.api.dtos.ClientDTO;
+import com.board.api.exceptions.clientExceptions.ClientConflictCPFException;
+import com.board.api.exceptions.clientExceptions.ClientNotFoundException;
 import com.board.api.models.ClientModel;
 import com.board.api.repositories.ClientRepository;
 
@@ -17,13 +19,14 @@ public class ClientService {
     }
 
     @SuppressWarnings("null")
-    public Optional<ClientModel> findById(Long id){
-        return clientRepository.findById(id); //exception
+    public ClientModel findById(Long id){
+        return clientRepository.findById(id).orElseThrow(
+            () -> new ClientNotFoundException("Client id is not found."));
     }
 
     public ClientModel save (ClientDTO dto){
         if(clientRepository.existsByCpf(dto.getCpf())){
-            //exception
+            throw new ClientConflictCPFException("CPF already exist.");
         }
 
         ClientModel client = new ClientModel(dto);
