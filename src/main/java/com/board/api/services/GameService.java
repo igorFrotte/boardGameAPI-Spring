@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.board.api.dtos.GameDTO;
+import com.board.api.exceptions.gameExceptions.GameConflictNameException;
 import com.board.api.models.GameModel;
 import com.board.api.repositories.GameRepository;
 
@@ -22,7 +23,7 @@ public class GameService {
 
     public GameModel save (GameDTO dto){
         if(gameRepository.existsByName(dto.getName())){
-            // exception
+            throw new GameConflictNameException("This game already exist.");
         }
 
         GameModel game = new GameModel(dto);
