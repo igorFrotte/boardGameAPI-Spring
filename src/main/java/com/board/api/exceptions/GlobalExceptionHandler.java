@@ -9,6 +9,9 @@ import com.board.api.exceptions.clientExceptions.ClientConflictCPFException;
 import com.board.api.exceptions.clientExceptions.ClientNotFoundException;
 import com.board.api.exceptions.gameExceptions.GameConflictNameException;
 import com.board.api.exceptions.gameExceptions.GameNotFoundException;
+import com.board.api.exceptions.rentalExceptions.RentalAlreadyCompletedException;
+import com.board.api.exceptions.rentalExceptions.RentalNotFoundException;
+import com.board.api.exceptions.rentalExceptions.RentalStockNotAvailableException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -31,6 +34,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({ClientConflictCPFException.class})
     public ResponseEntity<String> handlerCustomerConflictCPF(ClientConflictCPFException exception){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({RentalNotFoundException.class})
+    public ResponseEntity<String> handlerRentalNotFound(RentalNotFoundException exception){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({RentalStockNotAvailableException.class})
+    public ResponseEntity<String> handlerRentalNotAvailable(RentalStockNotAvailableException exception){
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(exception.getMessage());
+    }
+
+    @ExceptionHandler({RentalAlreadyCompletedException.class})
+    public ResponseEntity<String> handlerRentalAlreadyCompleted(RentalAlreadyCompletedException exception){
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(exception.getMessage());
     }
 
 }

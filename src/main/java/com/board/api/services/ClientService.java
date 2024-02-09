@@ -1,7 +1,5 @@
 package com.board.api.services;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import com.board.api.dtos.ClientDTO;
@@ -18,7 +16,6 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    @SuppressWarnings("null")
     public ClientModel findById(Long id){
         return clientRepository.findById(id).orElseThrow(
             () -> new ClientNotFoundException("Client id is not found."));
