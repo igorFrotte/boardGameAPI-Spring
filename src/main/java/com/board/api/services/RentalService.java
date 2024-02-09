@@ -36,7 +36,7 @@ public class RentalService {
     }
 
     public RentalModel save (RentalDTO dto){
-        ClientModel client = clientRepository.findById(dto.getClientId()).orElseThrow(
+        ClientModel client = clientRepository.findById(dto.getCustomerId()).orElseThrow(
             ()-> new ClientNotFoundException("Client not found.")
         );
 

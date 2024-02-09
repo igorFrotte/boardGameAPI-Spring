@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class RentalModel {
 
     public RentalModel (RentalDTO dto, ClientModel client, GameModel game, int originalPrice){
-        this.client = client;
+        this.customer = client;
         this.game = game;
         this.daysRented = dto.getDaysRented();
         this.originalPrice = originalPrice;
@@ -35,7 +35,7 @@ public class RentalModel {
     }
 
     public RentalModel (RentalModel rental, int delayFee){
-        this.client = rental.getClient();
+        this.customer = rental.getCustomer();
         this.game = rental.getGame();
         this.daysRented = rental.getDaysRented();
         this.originalPrice = rental.getOriginalPrice();
@@ -65,7 +65,7 @@ public class RentalModel {
 
     @ManyToOne
     @JoinColumn(name = "customer")
-    private ClientModel client;
+    private ClientModel customer;
 
     @ManyToOne
     @JoinColumn(name = "game")
